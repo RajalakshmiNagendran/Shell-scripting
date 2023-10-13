@@ -1,0 +1,22 @@
+version: 0.2
+env:
+  parameter-store:
+    docker_username: /myapp/docker-credential/username1
+    docker_password: /myapp/docker-credential/password1
+    docker_registry: /myapp/docker-registry/url1
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - echo "Building docker Image"
+      - cd Python-app/
+      - >-
+        echo "$docker_password" | docker login -u "$docker_username"
+        --password-stdin "$docker_registry"
+      - echo "login succeeded"
+      - 'docker build -t "$docker_registry/$docker_username/python-app:latest" .'
+      - echo "Pushing docker Image"
+      - 'docker push "$docker_registry/$docker_username/python-app:latest"'
+      - echo "Build completed Successfully"
