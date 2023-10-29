@@ -1,5 +1,21 @@
 #!/bin/bash
 
+#sample input
+: ' STDIN           Function
+-----           --------
+6               arr[] size n = 6
+-4 3 -9 0 4 1   arr = [-4, 3, -9, 0, 4, 1]
+
+Explanation
+There are 3 positive numbers, 2 negative numbers, and 1 zero in the array.
+The proportions of occurrence are positive:3/6=0.500000 , negative:2/6=0.333333  and zeros:1/6=0.166667 .
+
+#sample output
+0.500000
+0.333333
+0.166667
+'
+
 #input array = save it in array arr=()
 #input number of elements in an array = save it in variable "n"
 #read the values of an array and append it to the array = use for loop for doing this operation.
